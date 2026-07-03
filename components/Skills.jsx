@@ -15,9 +15,35 @@ const GAUGES = [
 ];
 
 const CHIPS = [
-  ["React", "React Native", "TypeScript", "JavaScript", "HTML5", "CSS3", "Vite", "Tailwind", "Material UI"],
-  ["Node.js", "Express", "APIs REST", "JWT", "Python", "Flask", "Axios"],
-  ["MongoDB", "SQL", "Git", "GitHub", "Postman", "Figma", "Notion"],
+  [
+    { n: "React", s: "react" },
+    { n: "React Native", s: "react" },
+    { n: "TypeScript", s: "typescript" },
+    { n: "JavaScript", s: "javascript" },
+    { n: "HTML5", s: "html5" },
+    { n: "CSS3", s: "css3" },
+    { n: "Vite", s: "vite" },
+    { n: "Tailwind", s: "tailwindcss" },
+    { n: "Material UI", s: "mui" },
+  ],
+  [
+    { n: "Node.js", s: "nodedotjs" },
+    { n: "Express", s: "express" },
+    { n: "APIs REST" },
+    { n: "JWT", s: "jsonwebtokens" },
+    { n: "Python", s: "python" },
+    { n: "Flask", s: "flask" },
+    { n: "Axios", s: "axios" },
+  ],
+  [
+    { n: "MongoDB", s: "mongodb" },
+    { n: "SQL" },
+    { n: "Git", s: "git" },
+    { n: "GitHub", s: "github" },
+    { n: "Postman", s: "postman" },
+    { n: "Figma", s: "figma" },
+    { n: "Notion", s: "notion" },
+  ],
 ];
 const DOTS = [3, 2, 1];
 const HX = ["01", "02", "03"];
@@ -112,7 +138,21 @@ export default function Skills() {
               <p>{col.p}</p>
               <div className="chips">
                 {CHIPS[i].map((c) => (
-                  <span key={c}>{c}</span>
+                  <span key={c.n}>
+                    {c.s && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        className="chip-ico"
+                        src={`https://cdn.simpleicons.org/${c.s}/${ICON_COLOR}`}
+                        alt=""
+                        loading="lazy"
+                        onError={(e) => {
+                          e.currentTarget.style.display = "none";
+                        }}
+                      />
+                    )}
+                    {c.n}
+                  </span>
                 ))}
               </div>
             </div>

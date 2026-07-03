@@ -209,7 +209,8 @@ section{position:relative;padding:100px 0}
 .stack-col h3 .hx{font-family:var(--font-mono);font-size:12px;color:var(--muted-2)}
 .stack-col p{font-size:14px;color:var(--muted);margin-bottom:16px;min-height:42px}
 .chips{display:flex;flex-wrap:wrap;gap:7px}
-.chips span{font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;padding:5px 10px;border:1px solid var(--line);color:var(--muted);background:rgba(49,225,255,.04);transition:.25s}
+.chips span{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;padding:5px 10px;border:1px solid var(--line);color:var(--muted);background:rgba(49,225,255,.04);transition:.25s}
+.chips .chip-ico{width:14px;height:14px;object-fit:contain;flex-shrink:0}
 .stack-col:hover .chips span{color:var(--cy);border-color:var(--line)}
 
 /* ---- PROJECTS ---- */

@@ -1,4 +1,4 @@
-const BASE = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://devpetersonbrito.netlify.app";
 
 export default function robots() {
   return {

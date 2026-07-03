@@ -23,7 +23,7 @@ const techMono = Share_Tech_Mono({
 
 export const metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://devpetersonbrito.netlify.app"
   ),
   title: "Peterson Brito - Desenvolvedor Full Stack",
   description:

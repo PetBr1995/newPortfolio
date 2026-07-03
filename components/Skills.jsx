@@ -3,13 +3,15 @@ import { useEffect, useRef, useState } from "react";
 import { useLang } from "./LangProvider";
 
 const CIRC = 264;
+const ICON_COLOR = "31e1ff"; // ciano do tema
+// Apenas as tecnologias (badges visuais iguais). slug = Simple Icons.
 const GAUGES = [
-  { name: "React", pct: 95, d: "" },
-  { name: "React Native", pct: 88, d: "d1" },
-  { name: "TypeScript", pct: 85, d: "d2" },
-  { name: "Node.js", pct: 87, d: "d3" },
-  { name: "MongoDB", pct: 82, d: "d4" },
-  { name: "Express", pct: 82, d: "d4" },
+  { name: "React", slug: "react", d: "" },
+  { name: "React Native", slug: "react", d: "d1" },
+  { name: "Node.js", slug: "nodedotjs", d: "d2" },
+  { name: "TypeScript", slug: "typescript", d: "d3" },
+  { name: "MongoDB", slug: "mongodb", d: "d4" },
+  { name: "Express", slug: "express", d: "d4" },
 ];
 
 const CHIPS = [
@@ -21,9 +23,8 @@ const DOTS = [3, 2, 1];
 const HX = ["01", "02", "03"];
 const DELAY = ["", "d1", "d2"];
 
-function Gauge({ name, pct, d }) {
+function Gauge({ name, slug, d }) {
   const ref = useRef(null);
-  const [val, setVal] = useState(0);
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
@@ -44,21 +45,8 @@ function Gauge({ name, pct, d }) {
     return () => io.disconnect();
   }, []);
 
-  useEffect(() => {
-    if (!inView) return;
-    let n = 0;
-    const t = setInterval(() => {
-      n += 2;
-      if (n >= pct) {
-        n = pct;
-        clearInterval(t);
-      }
-      setVal(n);
-    }, 22);
-    return () => clearInterval(t);
-  }, [inView, pct]);
-
-  const offset = inView ? CIRC - (CIRC * pct) / 100 : CIRC;
+  // anel decorativo: todos iguais (desenha completo ao entrar na tela)
+  const offset = inView ? 0 : CIRC;
 
   return (
     <div className={`gauge rv ${d}`} ref={ref}>
@@ -73,7 +61,13 @@ function Gauge({ name, pct, d }) {
             style={{ strokeDashoffset: offset }}
           />
         </svg>
-        <span className="g-val">{val}%</span>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          className="g-ico"
+          src={`https://cdn.simpleicons.org/${slug}/${ICON_COLOR}`}
+          alt={name}
+          loading="lazy"
+        />
       </div>
       <div className="g-name">{name}</div>
     </div>

@@ -83,7 +83,8 @@ h1,h2,h3,h4{font-family:var(--font-hud);font-weight:700;letter-spacing:.02em;lin
 .sysclock .d{font-size:10.5px;color:var(--muted-2);letter-spacing:.14em;text-transform:uppercase}
 .burger{display:none;flex-direction:column;gap:5px;background:none;border:1px solid var(--line);padding:9px;cursor:pointer}
 .burger span{width:22px;height:2px;background:var(--cy);transition:.3s}
-.lang-btn{font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--cy);background:rgba(49,225,255,.06);border:1px solid var(--line);padding:8px 12px;cursor:pointer;transition:.25s;text-transform:uppercase;flex-shrink:0}
+.lang-btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--cy);background:rgba(49,225,255,.06);border:1px solid var(--line);padding:7px 11px;cursor:pointer;transition:.25s;text-transform:uppercase;flex-shrink:0}
+.lang-btn svg{opacity:.9}
 .lang-btn:hover{background:rgba(49,225,255,.16);border-color:var(--cy);box-shadow:0 0 14px -4px var(--cy-glow)}
 
 /* ---- LAYOUT ---- */
@@ -190,14 +191,18 @@ section{position:relative;padding:100px 0}
 
 /* ---- SKILLS ---- */
 .gauge-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;margin-bottom:34px}
-.gauge{display:flex;flex-direction:column;align-items:center;gap:10px;padding:18px 8px;border:1px solid var(--line-soft);background:rgba(3,16,28,.4);transition:.3s}
+.gauge{display:flex;flex-direction:column;align-items:center;gap:7px;padding:18px 8px;border:1px solid var(--line-soft);background:rgba(3,16,28,.4);transition:.3s}
 .gauge:hover{border-color:var(--cy-dim);background:rgba(49,225,255,.05)}
 .gauge svg{width:92px;height:92px;transform:rotate(-90deg)}
 .gauge .track{fill:none;stroke:rgba(49,225,255,.12);stroke-width:6}
 .gauge .prog{fill:none;stroke:var(--cy);stroke-width:6;stroke-linecap:round;stroke-dasharray:264;stroke-dashoffset:264;filter:drop-shadow(0 0 4px var(--cy));transition:stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1)}
-.gauge .g-val{position:absolute;font-family:var(--font-mono);font-size:16px;color:var(--cy)}
 .gauge .g-wrap{position:relative;display:grid;place-items:center}
-.gauge .g-name{font-family:var(--font-hud);font-weight:500;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;text-align:center}
+.gauge .g-ico{position:absolute;width:36px;height:36px;object-fit:contain;filter:drop-shadow(0 0 7px rgba(49,225,255,.55))}
+.gauge .g-name{font-family:var(--font-hud);font-weight:500;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;text-align:center;margin-top:3px}
+.gauge .g-lvl{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase}
+.gauge .g-lvl.adv{color:var(--cy)}
+.gauge .g-lvl.int{color:var(--muted)}
+.gauge .g-lvl.basic{color:var(--muted-2)}
 .stack-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .stack-col{padding:22px 24px}
 .stack-col h3{font-size:15px;text-transform:uppercase;color:var(--cy);margin-bottom:8px;letter-spacing:.06em;display:flex;align-items:center;gap:9px}

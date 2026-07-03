@@ -31,3 +31,30 @@ export function MailIcon({ size = 20 }) {
     </svg>
   );
 }
+
+// Bandeiras (SVG, para o seletor de idioma)
+export function BRFlag({ size = 16 }) {
+  return (
+    <svg width={size} height={(size * 20) / 28} viewBox="0 0 28 20" style={{ display: "block", borderRadius: "2px" }} aria-hidden="true">
+      <rect width="28" height="20" fill="#009c3b" />
+      <polygon points="14,2 26,10 14,18 2,10" fill="#ffdf00" />
+      <circle cx="14" cy="10" r="4.3" fill="#002776" />
+    </svg>
+  );
+}
+
+export function USFlag({ size = 16 }) {
+  const stripes = [];
+  for (let i = 0; i < 13; i++) {
+    if (i % 2 === 0) {
+      stripes.push(<rect key={i} y={(i * 20) / 13} width="28" height={20 / 13} fill="#b22234" />);
+    }
+  }
+  return (
+    <svg width={size} height={(size * 20) / 28} viewBox="0 0 28 20" style={{ display: "block", borderRadius: "2px" }} aria-hidden="true">
+      <rect width="28" height="20" fill="#fff" />
+      {stripes}
+      <rect width="11.2" height={(20 * 7) / 13} fill="#3c3b6e" />
+    </svg>
+  );
+}

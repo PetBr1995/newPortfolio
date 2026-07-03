@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import logo from "../src/logo_site_portifolio2.png";
 import { useLang } from "./LangProvider";
+import { BRFlag, USFlag } from "./Icons";
 
 const MONTHS = {
   pt: ["JAN","FEV","MAR","ABR","MAI","JUN","JUL","AGO","SET","OUT","NOV","DEZ"],
@@ -81,6 +82,7 @@ export default function TopBar() {
         aria-label={lang === "pt" ? "Switch to English" : "Mudar para Português"}
         title={lang === "pt" ? "Switch to English" : "Mudar para Português"}
       >
+        {lang === "pt" ? <USFlag size={16} /> : <BRFlag size={16} />}
         {t.langBtn}
       </button>
 

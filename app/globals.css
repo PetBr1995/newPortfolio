@@ -180,6 +180,8 @@ section{position:relative;padding:100px 0}
 .about-body .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
 .about-body .tags span{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;padding:6px 12px;border:1px solid var(--line);color:var(--cy);background:rgba(49,225,255,.05)}
 .id-card{padding:22px 24px}
+.id-photo{display:flex;justify-content:center;padding:20px 0 12px}
+.id-photo img{width:158px;height:158px;object-fit:contain;filter:drop-shadow(0 0 20px rgba(49,225,255,.4))}
 .id-row{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line-soft)}
 .id-row:last-child{border:none}
 .id-row .ir-ic{width:40px;height:40px;flex-shrink:0;display:grid;place-items:center;border:1px solid var(--line);color:var(--cy);font-size:17px;background:rgba(49,225,255,.05)}

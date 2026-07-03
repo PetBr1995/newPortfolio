@@ -1,5 +1,6 @@
 "use client";
 import { useLang } from "./LangProvider";
+import foto from "../src/foto_perfil.png";
 
 const IC = ["▤", "✦", "◉", "☎"];
 
@@ -60,6 +61,10 @@ export default function About() {
                 <i />
                 <i />
               </span>
+            </div>
+            <div className="id-photo">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={foto.src} alt="Foto de Peterson Brito de Albuquerque" />
             </div>
             {a.idCard.map((row, i) => (
               <div className="id-row" key={i}>

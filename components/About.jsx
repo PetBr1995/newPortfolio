@@ -1,6 +1,6 @@
 "use client";
 import { useLang } from "./LangProvider";
-import foto from "../src/foto_perfil.png";
+import foto from "../src/foto_peterson.png";
 
 const IC = ["▤", "✦", "◉", "☎"];
 

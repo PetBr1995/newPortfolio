@@ -1,4 +1,4 @@
-# PETERSON.OS — Portfólio (Next.js)
+# Peterson Brito - Portfólio (Next.js)
 
 Portfólio HUD/sci-fi de **Peterson Brito de Albuquerque** convertido para **Next.js 14 (App Router)**.
 

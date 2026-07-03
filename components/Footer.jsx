@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="wrap">
         <div className="foot-grid">
           <span className="stat-led">
-            <i /> PETERSON.OS · © 2026 PETERSON BRITO DE ALBUQUERQUE
+            <i /> PETERSON · © 2026 PETERSON BRITO DE ALBUQUERQUE
           </span>
           <div className="fg-links">
             <a href="https://github.com/PetBr1995" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><GitHubIcon size={18} /></a>

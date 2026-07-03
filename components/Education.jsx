@@ -1,47 +1,45 @@
+"use client";
+import { useLang } from "./LangProvider";
+
 export default function Education() {
+  const { t } = useLang();
+  const e = t.education;
   return (
     <section id="formacao">
       <div className="wrap">
         <div className="sec-label rv">
-          <span className="idx">[05]</span> Base de Conhecimento
+          <span className="idx">{e.idx}</span> {e.label}
         </div>
         <h2 className="sec-title rv d1">
-          Formação &amp; <span className="g">cursos</span>
+          {e.title.a}
+          <span className="g">{e.title.hl}</span>
         </h2>
         <div className="edu-grid" style={{ marginTop: "38px" }}>
           <div className="panel edu-col rv">
             <div className="p-head">
-              <span>// ACADÊMICO</span>
+              <span>{e.col1Head}</span>
               <span className="dotgrp"><i className="on" /><i className="on" /><i /></span>
             </div>
-            <h3>▤ Formação Acadêmica</h3>
-            <div className="edu-item">
-              <div className="ei-t">Tecnólogo em Análise e Desenv. de Sistemas</div>
-              <div className="ei-d">ESTÁCIO</div>
-            </div>
-            <div className="edu-item">
-              <div className="ei-t">Técnico em Desenvolvimento de Software</div>
-              <div className="ei-d">FPF TECH · EM ANDAMENTO</div>
-            </div>
+            <h3>▤ {e.col1Title}</h3>
+            {e.acad.map((it, i) => (
+              <div className="edu-item" key={i}>
+                <div className="ei-t">{it.t}</div>
+                <div className="ei-d">{it.d}</div>
+              </div>
+            ))}
           </div>
           <div className="panel edu-col rv d1">
             <div className="p-head">
-              <span>// CURSOS</span>
+              <span>{e.col2Head}</span>
               <span className="dotgrp"><i className="on" /><i /><i /></span>
             </div>
-            <h3>✦ Cursos Complementares</h3>
-            <div className="edu-item">
-              <div className="ei-t">Programador Web</div>
-              <div className="ei-d">IFRS</div>
-            </div>
-            <div className="edu-item">
-              <div className="ei-t">Programador Full Stack</div>
-              <div className="ei-d">IFPK</div>
-            </div>
-            <div className="edu-item">
-              <div className="ei-t">HTML5 e CSS3</div>
-              <div className="ei-d">ONEBITCODE</div>
-            </div>
+            <h3>✦ {e.col2Title}</h3>
+            {e.courses.map((it, i) => (
+              <div className="edu-item" key={i}>
+                <div className="ei-t">{it.t}</div>
+                <div className="ei-d">{it.d}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

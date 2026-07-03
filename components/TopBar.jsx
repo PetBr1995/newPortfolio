@@ -1,19 +1,24 @@
 "use client";
 import { useEffect, useState } from "react";
 import logo from "../src/logo_site_portifolio2.png";
+import { useLang } from "./LangProvider";
 
-const MESES = ["JAN","FEV","MAR","ABR","MAI","JUN","JUL","AGO","SET","OUT","NOV","DEZ"];
+const MONTHS = {
+  pt: ["JAN","FEV","MAR","ABR","MAI","JUN","JUL","AGO","SET","OUT","NOV","DEZ"],
+  en: ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"],
+};
 const pad = (n) => String(n).padStart(2, "0");
 
 const NAV = [
-  { href: "#sobre", label: "SOBRE" },
-  { href: "#skills", label: "SKILLS" },
-  { href: "#projetos", label: "PROJETOS" },
-  { href: "#experiencia", label: "LOG" },
-  { href: "#contato", label: "CONTATO" },
+  { href: "#sobre", key: "sobre" },
+  { href: "#skills", key: "skills" },
+  { href: "#projetos", key: "projetos" },
+  { href: "#experiencia", key: "log" },
+  { href: "#contato", key: "contato" },
 ];
 
 export default function TopBar() {
+  const { t, lang, toggle } = useLang();
   const [time, setTime] = useState("00:00:00");
   const [date, setDate] = useState("-- --- ----");
   const [open, setOpen] = useState(false);
@@ -23,12 +28,12 @@ export default function TopBar() {
     const tick = () => {
       const d = new Date();
       setTime(`${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`);
-      setDate(`${pad(d.getDate())} ${MESES[d.getMonth()]} ${d.getFullYear()}`);
+      setDate(`${pad(d.getDate())} ${MONTHS[lang][d.getMonth()]} ${d.getFullYear()}`);
     };
     tick();
-    const t = setInterval(tick, 1000);
-    return () => clearInterval(t);
-  }, []);
+    const t2 = setInterval(tick, 1000);
+    return () => clearInterval(t2);
+  }, [lang]);
 
   useEffect(() => {
     const sections = NAV.map((n) => document.querySelector(n.href));
@@ -47,9 +52,9 @@ export default function TopBar() {
 
   return (
     <div className="topbar">
-      <a href="#top" className="brand-logo" aria-label="Peterson Brito — início">
+      <a href="#top" className="brand-logo" aria-label="Peterson Brito">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="brand-img" src={logo.src} alt="Peterson Brito — Desenvolvedor Full Stack" />
+        <img className="brand-img" src={logo.src} alt="Peterson Brito - Desenvolvedor Full Stack" />
       </a>
 
       <nav className={`topnav${open ? " open" : ""}`}>
@@ -60,7 +65,7 @@ export default function TopBar() {
             className={`mono${i === active ? " active" : ""}`}
             onClick={() => setOpen(false)}
           >
-            {n.label}
+            {t.nav[n.key]}
           </a>
         ))}
       </nav>
@@ -69,6 +74,15 @@ export default function TopBar() {
         <div className="t">{time}</div>
         <div className="d">{date}</div>
       </div>
+
+      <button
+        className="lang-btn"
+        onClick={toggle}
+        aria-label={lang === "pt" ? "Switch to English" : "Mudar para Português"}
+        title={lang === "pt" ? "Switch to English" : "Mudar para Português"}
+      >
+        {t.langBtn}
+      </button>
 
       <button
         className={`burger${open ? " x" : ""}`}

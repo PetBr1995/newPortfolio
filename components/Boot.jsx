@@ -1,30 +1,28 @@
 "use client";
 import { useEffect, useState } from "react";
-
-const LINES = [
-  "INICIANDO SISTEMA...",
-  "CARREGANDO MÓDULOS...",
-  "CONECTANDO NÚCLEO...",
-  "PETERSON.OS ONLINE ✓",
-];
+import { useLang } from "./LangProvider";
 
 export default function Boot() {
-  const [log, setLog] = useState(LINES[0]);
+  const { t } = useLang();
+  const LINES = t.boot;
+  const [idx, setIdx] = useState(0);
   const [done, setDone] = useState(false);
 
   useEffect(() => {
     let i = 0;
-    const t = setInterval(() => {
+    const timer = setInterval(() => {
       i++;
-      if (i < LINES.length) setLog(LINES[i]);
-      else clearInterval(t);
+      if (i < LINES.length) setIdx(i);
+      else clearInterval(timer);
     }, 550);
     const off = setTimeout(() => setDone(true), 2300);
     return () => {
-      clearInterval(t);
+      clearInterval(timer);
       clearTimeout(off);
     };
-  }, []);
+  }, [LINES.length]);
+
+  const log = LINES[Math.min(idx, LINES.length - 1)];
 
   return (
     <div id="boot" className={done ? "done" : undefined}>

@@ -2,7 +2,7 @@
   "name": "peterson-portfolio",
   "version": "1.0.0",
   "private": true,
-  "description": "Portfólio HUD de Peterson Brito — Next.js (App Router)",
+  "description": "Portfólio HUD de Peterson Brito - Next.js (App Router)",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

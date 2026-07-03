@@ -1,5 +1,5 @@
 /* ============================================================
-   PETERSON.OS — HUD / SCI-FI COMMAND CENTER
+   PETERSON.OS - HUD / SCI-FI COMMAND CENTER
    Fontes fornecidas via next/font (variáveis CSS no <html>)
    ============================================================ */
 :root{
@@ -83,6 +83,8 @@ h1,h2,h3,h4{font-family:var(--font-hud);font-weight:700;letter-spacing:.02em;lin
 .sysclock .d{font-size:10.5px;color:var(--muted-2);letter-spacing:.14em;text-transform:uppercase}
 .burger{display:none;flex-direction:column;gap:5px;background:none;border:1px solid var(--line);padding:9px;cursor:pointer}
 .burger span{width:22px;height:2px;background:var(--cy);transition:.3s}
+.lang-btn{font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--cy);background:rgba(49,225,255,.06);border:1px solid var(--line);padding:8px 12px;cursor:pointer;transition:.25s;text-transform:uppercase;flex-shrink:0}
+.lang-btn:hover{background:rgba(49,225,255,.16);border-color:var(--cy);box-shadow:0 0 14px -4px var(--cy-glow)}
 
 /* ---- LAYOUT ---- */
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
@@ -108,7 +110,7 @@ section{position:relative;padding:100px 0}
 .panel .p-head .dotgrp i.on{background:var(--cy);box-shadow:0 0 8px var(--cy)}
 
 /* ============================================================
-   HERO — REATOR CENTRAL
+   HERO - REATOR CENTRAL
    ============================================================ */
 .hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 70px}
 .hero-grid{display:flex;justify-content:center;align-items:center;gap:30px;width:100%}
@@ -157,8 +159,10 @@ section{position:relative;padding:100px 0}
 .btn{position:relative;display:inline-flex;align-items:center;gap:10px;padding:13px 26px;font-family:var(--font-hud);font-weight:500;font-size:13px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:.3s;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
 .btn-primary{background:var(--cy);color:#00131c;box-shadow:0 0 24px -4px var(--cy-glow)}
 .btn-primary:hover{box-shadow:0 0 34px var(--cy-glow);transform:translateY(-2px)}
-.btn-ghost{border:1px solid var(--cy-dim);color:var(--cy);background:rgba(49,225,255,.05)}
-.btn-ghost:hover{background:rgba(49,225,255,.14);transform:translateY(-2px)}
+.btn-ghost{color:var(--cy);background:var(--cy-dim);isolation:isolate}
+.btn-ghost::before{content:"";position:absolute;inset:1px;z-index:-1;background:#04121f;transition:.3s;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+.btn-ghost:hover{background:var(--cy);transform:translateY(-2px)}
+.btn-ghost:hover::before{background:#0a2233}
 
 /* ---- TELEMETRY TICKER ---- */
 .ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(2,12,22,.6);overflow:hidden;padding:11px 0}
@@ -268,8 +272,9 @@ section{position:relative;padding:100px 0}
 footer{border-top:1px solid var(--line);background:rgba(2,12,22,.6);padding:26px 0}
 .foot-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;color:var(--muted-2);text-transform:uppercase}
 .foot-grid .fg-links{display:flex;gap:8px}
-.foot-grid .fg-links a{width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--line);color:var(--cy);transition:.3s;font-size:11px}
-.foot-grid .fg-links a:hover{background:rgba(49,225,255,.12);box-shadow:0 0 16px -4px var(--cy-glow);transform:translateY(-2px)}
+.foot-grid .fg-links a{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line);color:var(--cy);transition:.3s}
+.foot-grid .fg-links a svg{display:block}
+.foot-grid .fg-links a:hover{background:rgba(49,225,255,.14);border-color:var(--cy);color:#eafcff;box-shadow:0 0 18px -4px var(--cy-glow);transform:translateY(-2px)}
 .foot-grid .stat-led{display:flex;align-items:center;gap:8px}
 .foot-grid .stat-led i{width:7px;height:7px;border-radius:50%;background:#42f5a0;box-shadow:0 0 8px #42f5a0;animation:pulse 1.8s infinite}
 
@@ -287,9 +292,14 @@ footer{border-top:1px solid var(--line);background:rgba(2,12,22,.6);padding:26px
 
 /* contact link cards */
 .contact-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;max-width:780px;margin:32px auto 0;position:relative}
-.cc{display:flex;align-items:center;gap:15px;padding:18px 20px;border:1px solid var(--line);background:rgba(3,16,28,.6);transition:.3s;text-align:left;clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px)}
-.cc:hover{border-color:var(--cy);background:rgba(49,225,255,.09);transform:translateY(-3px);box-shadow:0 0 26px -8px var(--cy-glow)}
-.cc .cc-ic{width:46px;height:46px;flex-shrink:0;display:grid;place-items:center;border:1px solid var(--cy-dim);color:var(--cy);font-size:17px;font-family:var(--font-mono);background:rgba(49,225,255,.06)}
+.cc{position:relative;display:flex;align-items:center;gap:15px;padding:18px 20px;background:var(--cy-dim);transition:.3s;text-align:left;clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px)}
+.cc::before{content:"";position:absolute;inset:1px;background:rgba(4,16,27,.97);z-index:0;transition:.3s;clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px)}
+.cc>*{position:relative;z-index:1}
+.cc:hover{background:var(--cy);transform:translateY(-3px);box-shadow:0 0 26px -8px var(--cy-glow)}
+.cc:hover::before{background:rgba(8,26,40,.96)}
+.cc .cc-ic{width:46px;height:46px;flex-shrink:0;display:grid;place-items:center;border:1px solid var(--cy-dim);color:var(--cy);background:rgba(49,225,255,.06);transition:.3s}
+.cc .cc-ic svg{display:block}
+.cc:hover .cc-ic{border-color:var(--cy);background:rgba(49,225,255,.13);color:#eafcff}
 .cc .cc-lbl{display:block;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);margin-bottom:3px}
 .cc .cc-val{display:block;font-family:var(--font-ui);font-weight:600;font-size:15px;color:var(--text);word-break:break-word;line-height:1.25}
 .cc .cc-arw{margin-left:auto;color:var(--muted-2);font-family:var(--font-mono);transition:.25s}

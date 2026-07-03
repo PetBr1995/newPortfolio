@@ -1,35 +1,40 @@
+"use client";
 import { GitHubIcon, LinkedInIcon, WhatsAppIcon, MailIcon } from "./Icons";
+import { useLang } from "./LangProvider";
 
 const CARDS = [
-  { href: "mailto:dev.petersonbrito@gmail.com", ic: <MailIcon size={22} />, lbl: "E-mail", val: "dev.petersonbrito@gmail.com", ext: false },
-  { href: "https://wa.me/5592981519333", ic: <WhatsAppIcon size={22} />, lbl: "WhatsApp / Telefone", val: "(92) 98151-9333", ext: true },
-  { href: "https://github.com/PetBr1995", ic: <GitHubIcon size={22} />, lbl: "GitHub", val: "github.com/PetBr1995", ext: true },
-  { href: "https://linkedin.com/in/peterson-brito-048380149", ic: <LinkedInIcon size={22} />, lbl: "LinkedIn", val: "Peterson Brito", ext: true },
+  { href: "mailto:dev.petersonbrito@gmail.com", ic: <MailIcon size={22} />, val: "dev.petersonbrito@gmail.com", ext: false },
+  { href: "https://wa.me/5592981519333", ic: <WhatsAppIcon size={22} />, val: "(92) 98151-9333", ext: true },
+  { href: "https://github.com/PetBr1995", ic: <GitHubIcon size={22} />, val: "github.com/PetBr1995", ext: true },
+  { href: "https://linkedin.com/in/peterson-brito-048380149", ic: <LinkedInIcon size={22} />, val: "Peterson Brito", ext: true },
 ];
 
 export default function Contact() {
+  const { t } = useLang();
+  const c = t.contact;
   return (
     <section className="contact" id="contato">
       <div className="wrap">
         <div className="panel transmit rv">
-          <div className="tx-label">// Contato</div>
+          <div className="tx-label">{c.label}</div>
           <h2>
-            Vamos <span className="g">conversar</span>
+            {c.title.a}
+            <span className="g">{c.title.hl}</span>
           </h2>
-          <p>Tem uma vaga ou projeto? Me chame por qualquer canal abaixo — respondo rápido.</p>
+          <p>{c.p}</p>
 
           <div className="contact-cards">
-            {CARDS.map((c) => (
+            {CARDS.map((card, i) => (
               <a
-                key={c.lbl}
-                href={c.href}
+                key={i}
+                href={card.href}
                 className="cc"
-                {...(c.ext ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                {...(card.ext ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               >
-                <span className="cc-ic">{c.ic}</span>
+                <span className="cc-ic">{card.ic}</span>
                 <span>
-                  <span className="cc-lbl">{c.lbl}</span>
-                  <span className="cc-val">{c.val}</span>
+                  <span className="cc-lbl">{c.cards[i]}</span>
+                  <span className="cc-val">{card.val}</span>
                 </span>
                 <span className="cc-arw">↗</span>
               </a>
@@ -43,12 +48,14 @@ export default function Contact() {
               rel="noopener noreferrer"
               className="btn btn-primary"
             >
-              ▤ Baixar currículo (PDF)
+              ▤ {c.cvBtn}
             </a>
           </div>
 
           <div className="contact-loc">
-            ◉ <b>Manaus / AM</b> · Disponível para trabalho remoto
+            {c.loc.pre}
+            <b>{c.loc.city}</b>
+            {c.loc.suf}
           </div>
         </div>
       </div>

@@ -25,11 +25,29 @@ export const metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
   ),
-  title: "PETERSON.OS — Full Stack Developer",
+  title: "Peterson Brito - Desenvolvedor Full Stack",
   description:
-    "Portfólio de Peterson Brito de Albuquerque — Desenvolvedor Full Stack em Manaus/AM. Interface HUD interativa. React, React Native, Node.js e TypeScript.",
+    "Portfólio de Peterson Brito de Albuquerque - Desenvolvedor Full Stack em Manaus/AM. Interface HUD interativa. React, React Native, Node.js e TypeScript.",
+  keywords: [
+    "Peterson Brito",
+    "Desenvolvedor Full Stack",
+    "Full Stack Developer",
+    "React",
+    "React Native",
+    "Node.js",
+    "TypeScript",
+    "MongoDB",
+    "Next.js",
+    "desenvolvedor web",
+    "desenvolvedor mobile",
+    "Manaus",
+    "portfólio",
+  ],
+  authors: [{ name: "Peterson Brito de Albuquerque" }],
+  creator: "Peterson Brito de Albuquerque",
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Peterson Brito — Desenvolvedor Full Stack",
+    title: "Peterson Brito - Desenvolvedor Full Stack",
     description:
       "Aplicações web e mobile com React, React Native, Node.js e TypeScript. Do conceito ao deploy.",
     type: "website",
@@ -37,7 +55,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Peterson Brito — Desenvolvedor Full Stack",
+    title: "Peterson Brito - Desenvolvedor Full Stack",
     description:
       "Aplicações web e mobile com React, React Native, Node.js e TypeScript.",
   },

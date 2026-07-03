@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { useLang } from "./LangProvider";
 
 const CIRC = 264;
 const GAUGES = [
@@ -10,6 +11,15 @@ const GAUGES = [
   { name: "MongoDB", pct: 82, d: "d4" },
   { name: "Express", pct: 82, d: "d4" },
 ];
+
+const CHIPS = [
+  ["React", "React Native", "TypeScript", "JavaScript", "HTML5", "CSS3", "Vite", "Tailwind", "Material UI"],
+  ["Node.js", "Express", "APIs REST", "JWT", "Python", "Flask", "Axios"],
+  ["MongoDB", "SQL", "Git", "GitHub", "Postman", "Figma", "Notion"],
+];
+const DOTS = [3, 2, 1];
+const HX = ["01", "02", "03"];
+const DELAY = ["", "d1", "d2"];
 
 function Gauge({ name, pct, d }) {
   const ref = useRef(null);
@@ -71,19 +81,19 @@ function Gauge({ name, pct, d }) {
 }
 
 export default function Skills() {
+  const { t } = useLang();
+  const s = t.skills;
   return (
     <section id="skills">
       <div className="wrap">
         <div className="sec-label rv">
-          <span className="idx">[02]</span> Diagnóstico de Sistema
+          <span className="idx">{s.idx}</span> {s.label}
         </div>
         <h2 className="sec-title rv d1">
-          Níveis de <span className="g">proficiência</span>
+          {s.title.a}
+          <span className="g">{s.title.hl}</span>
         </h2>
-        <p className="sec-lead rv d1">
-          Leitura em tempo real da stack técnica. Cada núcleo representa uma
-          tecnologia do arsenal.
-        </p>
+        <p className="sec-lead rv d1">{s.lead}</p>
 
         <div className="gauge-grid" style={{ marginTop: "38px" }}>
           {GAUGES.map((g) => (
@@ -92,39 +102,27 @@ export default function Skills() {
         </div>
 
         <div className="stack-cols">
-          <div className="panel stack-col rv">
-            <div className="p-head">
-              <span>// FRONT_END</span>
-              <span className="dotgrp"><i className="on" /><i className="on" /><i className="on" /></span>
+          {s.cols.map((col, i) => (
+            <div className={`panel stack-col rv ${DELAY[i]}`} key={i}>
+              <div className="p-head">
+                <span>{col.head}</span>
+                <span className="dotgrp">
+                  {[0, 1, 2].map((dot) => (
+                    <i key={dot} className={dot < DOTS[i] ? "on" : undefined} />
+                  ))}
+                </span>
+              </div>
+              <h3>
+                <span className="hx">{HX[i]}</span> {col.title}
+              </h3>
+              <p>{col.p}</p>
+              <div className="chips">
+                {CHIPS[i].map((c) => (
+                  <span key={c}>{c}</span>
+                ))}
+              </div>
             </div>
-            <h3><span className="hx">01</span> Front-End</h3>
-            <p>Interfaces web e mobile modernas e responsivas, com componentes reutilizáveis e foco em UX.</p>
-            <div className="chips">
-              {["React","React Native","TypeScript","JavaScript","HTML5","CSS3","Vite","Tailwind","Material UI"].map((c) => <span key={c}>{c}</span>)}
-            </div>
-          </div>
-          <div className="panel stack-col rv d1">
-            <div className="p-head">
-              <span>// BACK_END</span>
-              <span className="dotgrp"><i className="on" /><i className="on" /><i /></span>
-            </div>
-            <h3><span className="hx">02</span> Back-End</h3>
-            <p>APIs REST, autenticação JWT e integração entre frontend e backend. Também com Python/Flask.</p>
-            <div className="chips">
-              {["Node.js","Express","APIs REST","JWT","Python","Flask","Axios"].map((c) => <span key={c}>{c}</span>)}
-            </div>
-          </div>
-          <div className="panel stack-col rv d2">
-            <div className="p-head">
-              <span>// DATA_TOOLS</span>
-              <span className="dotgrp"><i className="on" /><i /><i /></span>
-            </div>
-            <h3><span className="hx">03</span> Dados &amp; Ferramentas</h3>
-            <p>Modelagem de dados, versionamento e as ferramentas do meu fluxo de trabalho.</p>
-            <div className="chips">
-              {["MongoDB","SQL","Git","GitHub","Postman","Figma","Notion"].map((c) => <span key={c}>{c}</span>)}
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

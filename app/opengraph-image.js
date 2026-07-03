@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Peterson Brito — Desenvolvedor Full Stack";
+export const alt = "Peterson Brito - Desenvolvedor Full Stack";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -70,7 +70,7 @@ export default function Image() {
               display: "flex",
             }}
           />
-          PETERSON.OS
+          PORTFÓLIO
         </div>
 
         <div

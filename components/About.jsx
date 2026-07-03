@@ -1,17 +1,26 @@
+"use client";
+import { useLang } from "./LangProvider";
+
+const IC = ["▤", "✦", "◉", "☎"];
+
 export default function About() {
+  const { t } = useLang();
+  const a = t.about;
   return (
     <section id="sobre">
       <div className="wrap">
         <div className="sec-label rv">
-          <span className="idx">[01]</span> Perfil do Operador
+          <span className="idx">{a.idx}</span> {a.label}
         </div>
         <h2 className="sec-title rv d1">
-          Do <span className="g">frontend</span> ao banco de dados
+          {a.title.a}
+          <span className="g">{a.title.hl}</span>
+          {a.title.b}
         </h2>
         <div className="about-grid" style={{ marginTop: "34px" }}>
           <div className="panel about-body rv d1">
             <div className="p-head">
-              <span>// DOSSIÊ_PETERSON.LOG</span>
+              <span>{a.head}</span>
               <span className="dotgrp">
                 <i className="on" />
                 <i className="on" />
@@ -20,70 +29,47 @@ export default function About() {
             </div>
             <div style={{ paddingTop: "18px" }}>
               <p>
-                Sou <strong>Peterson Brito de Albuquerque</strong>, desenvolvedor
-                full stack em Manaus/AM. Tenho experiência no desenvolvimento de
-                aplicações web e mobile com{" "}
-                <strong>React, React Native, Node.js, JavaScript e TypeScript</strong>.
+                {a.p1a}
+                <strong>Peterson Brito de Albuquerque</strong>
+                {a.p1b}
+                <strong>{a.p1c}</strong>
               </p>
               <p>
-                Atuo na construção de dashboards administrativos, APIs REST,
-                autenticação JWT, integração entre frontend e backend, PWAs e
-                sistemas de gestão. Trabalho com{" "}
-                <strong>MongoDB, SQL e Git</strong>, com foco em performance e
-                qualidade de código.
+                {a.p2a}
+                <strong>{a.p2b}</strong>
+                {a.p2c}
               </p>
               <p>
-                Também aplico <strong>Engenharia de Prompt</strong> ao
-                desenvolvimento de software para acelerar entregas e resolver
-                problemas com mais eficiência.
+                {a.p3a}
+                <strong>{a.p3b}</strong>
+                {a.p3c}
               </p>
               <div className="tags">
-                <span>CLEAN_CODE</span>
-                <span>PERFORMANCE</span>
-                <span>WEB_&amp;_MOBILE</span>
-                <span>JWT_AUTH</span>
-                <span>PROMPT_ENG</span>
+                {a.tags.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
               </div>
             </div>
           </div>
 
           <div className="panel id-card rv d2">
             <div className="p-head">
-              <span>// ID_CARD</span>
+              <span>{a.idCardHead}</span>
               <span className="dotgrp">
                 <i className="on" />
                 <i />
                 <i />
               </span>
             </div>
-            <div className="id-row">
-              <div className="ir-ic">▤</div>
-              <div>
-                <div className="ir-t">Full Stack Developer</div>
-                <div className="ir-d">WEB &amp; MOBILE · REACT · NODE</div>
+            {a.idCard.map((row, i) => (
+              <div className="id-row" key={i}>
+                <div className="ir-ic">{IC[i]}</div>
+                <div>
+                  <div className="ir-t">{row.t}</div>
+                  <div className="ir-d">{row.d}</div>
+                </div>
               </div>
-            </div>
-            <div className="id-row">
-              <div className="ir-ic">✦</div>
-              <div>
-                <div className="ir-t">Análise e Desenv. de Sistemas</div>
-                <div className="ir-d">ESTÁCIO · TECNÓLOGO</div>
-              </div>
-            </div>
-            <div className="id-row">
-              <div className="ir-ic">◉</div>
-              <div>
-                <div className="ir-t">Manaus / AM</div>
-                <div className="ir-d">DISPONÍVEL · REMOTO</div>
-              </div>
-            </div>
-            <div className="id-row">
-              <div className="ir-ic">☎</div>
-              <div>
-                <div className="ir-t">(92) 98151-9333</div>
-                <div className="ir-d">DEV.PETERSONBRITO@GMAIL.COM</div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

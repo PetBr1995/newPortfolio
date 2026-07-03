@@ -1,15 +1,13 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { useLang } from "./LangProvider";
 
 const pad = (n) => String(n).padStart(2, "0");
-const PHRASES = [
-  "> web & mobile · react + node",
-  "> apis rest · jwt · mongodb",
-  "> do conceito ao deploy_",
-];
 const TICKS = Array.from({ length: 48 }, (_, i) => i);
 
 export default function Hero() {
+  const { t } = useLang();
+  const PHRASES = t.hero.typed;
   const [coreTime, setCoreTime] = useState("03:09");
   const [stat, setStat] = useState("CPU 62% · MEM 41%");
   const [typed, setTyped] = useState("");
@@ -64,7 +62,7 @@ export default function Hero() {
       clearTimeout(start);
       clearTimeout(timer);
     };
-  }, []);
+  }, [PHRASES]);
 
   /* parallax do reator */
   useEffect(() => {
@@ -108,14 +106,14 @@ export default function Hero() {
               <div className="r-core">
                 <div>
                   <div className="rc-time">{coreTime}</div>
-                  <div className="rc-lbl">Full Stack</div>
+                  <div className="rc-lbl">{t.hero.coreLabel}</div>
                   <div className="rc-stat">{stat}</div>
                 </div>
               </div>
             </div>
 
             <div className="hero-name">
-              <div className="role rv">Desenvolvedor Full Stack</div>
+              <div className="role rv">{t.hero.role}</div>
               <h1 className="rv d1">
                 PETERSON <span className="hl">BRITO</span>
               </h1>
@@ -124,8 +122,8 @@ export default function Hero() {
                 <span className="cur">▌</span>
               </div>
               <div className="hero-cta rv d3">
-                <a href="#projetos" className="btn btn-primary">▶ Iniciar</a>
-                <a href="#contato" className="btn btn-ghost">Transmitir</a>
+                <a href="#projetos" className="btn btn-primary">{t.hero.cta1}</a>
+                <a href="#contato" className="btn btn-ghost">{t.hero.cta2}</a>
               </div>
             </div>
           </div>

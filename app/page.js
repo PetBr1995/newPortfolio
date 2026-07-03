@@ -1,3 +1,4 @@
+import { LangProvider } from "../components/LangProvider";
 import Background from "../components/Background";
 import Reveal from "../components/Reveal";
 import Boot from "../components/Boot";
@@ -14,7 +15,7 @@ import Footer from "../components/Footer";
 
 export default function Home() {
   return (
-    <>
+    <LangProvider>
       <Background />
       <Boot />
       <TopBar />
@@ -30,6 +31,6 @@ export default function Home() {
       </main>
       <Footer />
       <Reveal />
-    </>
+    </LangProvider>
   );
 }

@@ -1,8 +1,10 @@
+import { GitHubIcon, LinkedInIcon, WhatsAppIcon, MailIcon } from "./Icons";
+
 const CARDS = [
-  { href: "mailto:dev.petersonbrito@gmail.com", ic: "✉", lbl: "E-mail", val: "dev.petersonbrito@gmail.com", ext: false },
-  { href: "https://wa.me/5592981519333", ic: "☎", lbl: "WhatsApp / Telefone", val: "(92) 98151-9333", ext: true },
-  { href: "https://github.com/PetBr1995", ic: "GH", lbl: "GitHub", val: "github.com/PetBr1995", ext: true },
-  { href: "https://linkedin.com/in/peterson-brito-048380149", ic: "in", lbl: "LinkedIn", val: "Peterson Brito", ext: true },
+  { href: "mailto:dev.petersonbrito@gmail.com", ic: <MailIcon size={22} />, lbl: "E-mail", val: "dev.petersonbrito@gmail.com", ext: false },
+  { href: "https://wa.me/5592981519333", ic: <WhatsAppIcon size={22} />, lbl: "WhatsApp / Telefone", val: "(92) 98151-9333", ext: true },
+  { href: "https://github.com/PetBr1995", ic: <GitHubIcon size={22} />, lbl: "GitHub", val: "github.com/PetBr1995", ext: true },
+  { href: "https://linkedin.com/in/peterson-brito-048380149", ic: <LinkedInIcon size={22} />, lbl: "LinkedIn", val: "Peterson Brito", ext: true },
 ];
 
 export default function Contact() {
